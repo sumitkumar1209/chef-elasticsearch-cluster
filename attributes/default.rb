@@ -1,4 +1,4 @@
-default['elasticsearch']['version'] = '5.1.2'
+default['elasticsearch']['version'] = '2.4.4'
 default['elasticsearch']['sha256sum'] = nil
 default['elasticsearch']['version_suffix'] = value_for_platform_family(
   'debian' => '',
@@ -6,7 +6,7 @@ default['elasticsearch']['version_suffix'] = value_for_platform_family(
 )
 
 default['elasticsearch']['install_method']  = 'package' # options: package tarball
-default['elasticsearch']['install_java']    = true
+default['elasticsearch']['install_java']    = false
 default['elasticsearch']['tarball_purge'] = false
 
 # cookbook for configuration files template resources

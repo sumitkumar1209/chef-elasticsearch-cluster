@@ -1,6 +1,7 @@
 *~
 .rbx
 *.class
+.idea
 .kitchen/
 .kitchen.local.yml
 tmp/

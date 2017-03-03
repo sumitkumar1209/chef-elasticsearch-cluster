@@ -7,7 +7,7 @@
 # Use a descriptive name for your cluster:
 #
 # cluster.name: my-application
-default['elasticsearch']['config_v5']['cluster.name'] = nil
+default['elasticsearch']['config_v5']['cluster.name'] = 'es_analytics'
 #
 # ------------------------------------ Node ------------------------------------
 #
@@ -81,12 +81,12 @@ default['elasticsearch']['config_v5']['http.port'] = 9_200
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
 # discovery.zen.ping.unicast.hosts: ["host1", "host2"]
-default['elasticsearch']['config_v5']['discovery.zen.ping.unicast.hosts'] = []
+default['elasticsearch']['config_v5']['discovery.zen.ping.unicast.hosts'] = ['172.31.49.61','172.31.71.3','172.31.18.53']
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of nodes / 2 + 1):
 #
 # discovery.zen.minimum_master_nodes: 3
-default['elasticsearch']['config_v5']['discovery.zen.minimum_master_nodes'] = 1
+default['elasticsearch']['config_v5']['discovery.zen.minimum_master_nodes'] = 2
 default['elasticsearch']['config_v5']['discovery.zen.fd.ping_timeout'] = '3s'
 # Removed from ES 5.0
 # default['elasticsearch']['config_v5']['discovery.zen.ping.multicast.enabled'] = false

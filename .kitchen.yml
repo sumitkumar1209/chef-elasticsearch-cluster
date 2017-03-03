@@ -62,7 +62,7 @@ suites:
         plugins:
           head:
             install_source: mobz/elasticsearch-head
-        version: 2.4.3
+        version: 2.4.4
 
   - name: version2tarball
     run_list:

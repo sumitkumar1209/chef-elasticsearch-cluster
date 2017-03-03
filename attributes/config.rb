@@ -1,15 +1,10 @@
 
 ################################### Cluster ###################################
-default['elasticsearch']['config']['cluster.name'] = nil
+default['elasticsearch']['config']['cluster.name'] = 'es_analytics'
 #################################### Node #####################################
 default['elasticsearch']['config']['node.name'] = node.name
 default['elasticsearch']['config']['node.master'] = true
-default['elasticsearch']['config']['node.data'] = true
-# default['elasticsearch']['config']['node.rack'] = 'rack314'
-default['elasticsearch']['config']['node.max_local_storage_nodes'] = 1
-#################################### Index ####################################
-default['elasticsearch']['config']['index.number_of_shards'] = 5
-default['elasticsearch']['config']['index.number_of_replicas'] = 1
+default['elasticsearch']['config']['node.data'] = false
 #################################### Plugin ###################################
 # default['elasticsearch']['config']['plugin.mandatory'] = 'mapper-attachments,lang-groovy'
 ################################### Memory ####################################
@@ -37,7 +32,7 @@ default['elasticsearch']['config']['http.port'] = 9_200
 default['elasticsearch']['config']['discovery.zen.minimum_master_nodes'] = 1
 default['elasticsearch']['config']['discovery.zen.ping.timeout'] = '3s'
 default['elasticsearch']['config']['discovery.zen.ping.multicast.enabled'] = false
-default['elasticsearch']['config']['discovery.zen.ping.unicast.hosts'] = []
+default['elasticsearch']['config']['discovery.zen.ping.unicast.hosts'] = ['172.31.49.61','172.31.71.3','172.31.18.53']
 ################################## Slow Log ##################################
 # default['elasticsearch']['config']['index.search.slowlog.threshold.query.warn'] = '10s'
 # default['elasticsearch']['config']['index.search.slowlog.threshold.query.info'] = '5s'
