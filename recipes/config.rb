@@ -90,11 +90,20 @@ notify_service_start = if (node['elasticsearch']['service_action'].is_a?(Array) 
 
 template node['elasticsearch']['jvm_options_file'] do
   cookbook node['elasticsearch']['cookbook']
-  source 'jvm.options.erb'
+  source "jvm.options.#{node['elasticsearch']['version'].split('.')[0]}.x.erb"
   owner node['elasticsearch']['user']
   group node['elasticsearch']['group']
   mode 0600
   notifies :restart, 'service[elasticsearch]' if node['elasticsearch']['notify_restart']
+end
+
+if node['elasticsearch']['setup_user_limits'] # ~FC023
+  user_ulimit node['elasticsearch']['user'] do
+    filehandle_limit node['elasticsearch']['limits']['nofile']
+    process_limit node['elasticsearch']['limits']['nproc']
+    memory_limit node['elasticsearch']['limits']['memlock']
+    notifies :restart, 'service[elasticsearch]', :delayed if node['elasticsearch']['notify_restart']
+  end
 end
 
 ruby_block 'delay elasticsearch service start' do
